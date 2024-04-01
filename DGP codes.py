@@ -137,7 +137,6 @@ data = pd.DataFrame({
 })
 
 data.to_csv('IV_Data.csv',index=False)
-data['Ad_Costs'].min(), data['Ad_Costs'].max(), data['Ad_Expenditure'].min(), data['Ad_Expenditure'].max(), data['Sales'].min(), data['Sales'].max()
 
 
 
@@ -189,7 +188,7 @@ df.to_csv('RDD_ratings.csv', index=False)
 For synthetic control method
 Assume for a category of product, one state reduced tax recently while other states did not. We are interested in estimating the effect of tax reduction on sales of the category data. We define each state in terms of index i, where i = 0, 1, …, 50, where State0 is the treated unit, and State1-50 are control states. We denote each outcome measure as Y(i, t) for t = 1, …, 200, where t is period. Periods 1-100 are pre-treatment periods, treatment happens in period 100, and periods 101-200 are post-treatment periods. 
 Treatment effect is 10.
-We generated a synthetic control using  State1 (weight 0.2) and State2 (weight 0.8) and random noise. In our simulation, we tried performing synthetic control methods based on all 50 states, States 1-25, States 1-10, States 1-5, and All 100 pre-treatment periods, pre-treatment periods 51-100, pre-treatment periods 81-100, pre-treatment periods 91-100.
+We generated the treatment unit using  State1 (weight 0.2) and State2 (weight 0.8) and random noise. In our simulation, we tried performing synthetic control methods based on all 50 states, States 1-25, States 1-10, States 1-5, and All 100 pre-treatment periods, pre-treatment periods 51-100, pre-treatment periods 81-100, pre-treatment periods 91-100.
 After obtaining the synthetic control, we use diff-in-diff to estimate the treatment effect.
 '''
 
