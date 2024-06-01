@@ -1,10 +1,17 @@
+****************************************************************************************************
+*Zezhen (Dawn) He and Vithala R. Rao (2024), "Methods for Causal Inference in Marketing", 
+*Foundations and Trends® in Marketing: Vol. 18, No. 3, pp 176–309.
+
+*Appendix B: Stata Code for Analysis of Data
+
 *This file should be run after the Python generation code.
 *Please specify the directory path to the files on your system in place of <YourDirectoryPath>.
+****************************************************************************************************
 
-******************************
-***Regression of Treatment Effects
-******************************
 
+
+***Regression of Treatment Effects, Section 3.4.1
+**************************************************
 import delimited "<YourDirectoryPath>/simulated_TV_areas.csv", clear 
 rename female pct_female
 *Dependent var: purchase rate
@@ -14,10 +21,8 @@ reg pct_buyer_1sttime_t avg_age avg_income pct_female pct_days_promo treatment
 
 
 
-******************************
-***Nearest-Neighbor Matching
-******************************
-
+***Nearest-Neighbor Matching, Section 3.4.7
+********************************************
 import delimited "<YourDirectoryPath>/simulated_TV_areas_nnmatch.csv", clear 
 rename female pct_female
 
@@ -28,10 +33,8 @@ teffects nnmatch (pct_buyer_1sttime_t avg_age avg_income pct_female pct_days_pro
 
 
 
-******************************
-***Propensity Score Matching
-******************************
-
+***Propensity Score Matching, Section 3.4.8
+********************************************
 *Dependent var: purchase rate
 teffects psmatch (purchase_rate_t) (treatment avg_age avg_income pct_female pct_days_promo)
 *Dependent var: percent of first time buyer
@@ -39,10 +42,8 @@ teffects psmatch (pct_buyer_1sttime_t) (treatment avg_age avg_income pct_female 
 
 
 
-******************************
-***Instrumental Variable
-******************************
-
+***Instrumental Variable, Section 3.4.3
+****************************************
 import delimited "<YourDirectoryPath>/IV_Data.csv", clear
 
 *manually run 2sls
@@ -61,10 +62,8 @@ estat firststage
 
 
 
-******************************
-***Regression Discontinuity Method
-******************************
-
+***Regression Discontinuity Method, Section 3.4.4
+**************************************************
 net install rdrobust, from(https://raw.githubusercontent.com/rdpackages/rdrobust/master/stata) replace
 
 import delimited "<YourDirectoryPath>/RD_ratings.csv", clear 
@@ -75,10 +74,8 @@ rdrobust sales rating, c(3) all
 
 
 
-******************************
-***Synthetic Control Method
-******************************
-
+***Synthetic Control Method, Section 3.4.5
+*******************************************
 *Convert time series to panel data
 import delimited "<YourDirectoryPath>/Synthetic_Control_Data.csv", clear 
 reshape long y, i(period) j(State)
@@ -120,10 +117,8 @@ xtdidregress (_Y_)(treatment), group(nState) time(_time)
 
 
 
-******************************
-***Differences-in-Differences
-******************************
-
+***Differences-in-Differences, Section 3.4.2
+*********************************************
 use "<YourDirectoryPath>/Synth_Panel.dta", clear
 
 *DID result using State2 as control (which has weight of beta 0.8 when generating the treatment unit in our simulation). 

@@ -1,5 +1,14 @@
 '''
-For regression of treatment effects
+Zezhen (Dawn) He and Vithala R. Rao (2024), “Methods for Causal Inference in Marketing”, 
+Foundations and Trends® in Marketing: Vol. 18, No. 3, pp 176–309.
+
+Appendix A: Python Code for Generating Simulated Data
+'''
+
+
+
+'''
+For Regression of Treatment Effects, Section 3.4.1
 
 Example Context: Assume a firm is interested in testing the impact of
 a new television ad compared to its existing television ad, and the firm
@@ -78,7 +87,7 @@ df.to_csv('simulated_TV_areas.csv', index=False)
 
 
 '''
-For nearest neighbor matching and propensity score matching
+For Nearest Neighbor Matching, Section 3.4.7 and Propensity Score Matching, Section 3.4.8
 
 Example Context: Here we used a similar dataset except that we generated
 the TV areas 21, . . . , 40 as close neighbors of TV areas 1, . . . , 20.
@@ -130,7 +139,7 @@ df.to_csv('simulated_TV_areas_nnmatch.csv', index=False)
 
 
 '''
-For instrumental variable
+For Instrumental Variable, Section 3.4.3
 
 Example Context: We used the IV method to estimate the causal effect
 of advertising on sales. For this purpose, we generated one unobserved
@@ -179,7 +188,7 @@ data.to_csv('IV_Data.csv',index=False)
 
 
 '''
-For regression discontinuity design
+For Regression Discontinuity Design, Section 3.4.4
 
 Example Context: Assume a firm owns an online platform where hotel
 guests provide ratings on three variables (brand image, price, and
@@ -234,7 +243,7 @@ df.to_csv('RD_ratings.csv', index=False)
 
 
 '''
-For synthetic control method (and differences-in-differences)
+For Synthetic Control Method, Section 3.4.5 (and Differences-In-Differences, Section 3.4.2)
 
 Example Context: Assume that a country consists of 51 geographically
 identified States and that these States have a sales tax for products sold
